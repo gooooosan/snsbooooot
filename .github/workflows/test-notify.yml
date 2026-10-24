@@ -1,0 +1,12 @@
+name: Discordテスト通知
+on:
+  workflow_dispatch:
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Discordにテスト送信
+        env:
+          WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_1 }}
+        run: |
+          curl -H "Content-Type: application/json" -d '{"content":"テスト通知です！"}' "$WEBHOOK_URL"
